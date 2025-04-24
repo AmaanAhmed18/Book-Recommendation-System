@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Books | BookWise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  <link rel="stylesheet" href="stylesD.css"/>
+</head>
+<body>
+   <div class="content-wrapper">
+    <nav class="navbar">
+      <div class="logo">BookWise.</div>
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="books.html" class="active">Books</a></li>
+        <li><a href="chatbot.html">ChatBot</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>  
+    <section class="dashboard">
+      <h2>All Books Collection</h2>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a book" />
+        <button id="searchBtn">Search</button>
+      </div>  
+      <div class="loader" id="loader"></div>    
+<div class="book-grid" id="book-grid">
+</div>
+    </section>
+   </div>
+</body>
+<footer class="footer">
+  <p>Connect with us</p>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+<script src="books.js"></script>
+</html>
+
+
+
+
+
+

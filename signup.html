@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | BookWise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Create Your Account</h2>
+    <form class="auth-form">
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </form>
+    <div class="loader"></div>
+    <p class="message"></p>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyDxZ8J1qbUnVEhdVgE-z-KIE2ljTZLXY3Y",
+      authDomain: "bookwise-cca49.firebaseapp.com",
+      projectId: "bookwise-cca49",
+      storageBucket: "bookwise-cca49.firebaseapp.com",
+      messagingSenderId: "393499290755",
+      appId: "1:393499290755:web:135c4f8e7091bd7da8ffb6"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  
+    const form = document.querySelector('.auth-form');
+    const loader = document.querySelector('.loader');
+    const message = document.querySelector('.message');
+  
+
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loader.style.display = "block";
+      message.textContent = "";
+      message.className = "message";
+  
+      const email = form.querySelector('input[type="email"]').value;
+      const password = form.querySelector('input[type="password"]').value;
+  
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          localStorage.clear();
+          loader.style.display = "none";
+          message.textContent = "Signup successful! Redirecting...";
+          message.classList.add("success");
+
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1500);
+        })
+        .catch((error) => {
+          loader.style.display = "none";
+          message.textContent = error.message;
+          message.classList.add("error");
+        });
+    });
+  </script>
+</body>
+</html>

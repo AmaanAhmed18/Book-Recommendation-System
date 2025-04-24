@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden; 
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #7F00FF, #E100FF);
+  }
+ 
+  
+/* Dash and Book   */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    color: white;
+    width: 100%;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 2rem;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+  }
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 5rem;
+    font-size: 1.2rem;
+  }
+  
+  .nav-links li a.active,
+  .nav-links li a:hover {
+    border-bottom: 2px solid white;
+  }
+  
+  .dashboard {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .dashboard h2{
+    color: white;
+    margin: 50px 0 40px 0;
+    font-size: 1.5rem;
+  }
+   
+
+
+
+  /* Book Card */
+  .book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 0.5rem;
+  }
+  
+  .book-card {
+    background: white;
+    flex: 1 1 calc(33.33% - 2rem); /* 3 per row default */
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: calc(33.33% - 2rem);
+  }
+  
+  .book-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .book-card h3 {
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .book-card p {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    margin: 0.3rem 0;
+  }
+  
+  .book-card .tags {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .book-card .tags span {
+    background-color: #eee;
+    border-radius: 4px;
+    padding: 3px 6px;
+    margin: 2px;
+    font-size: 12px;
+    color: #333;
+  }
+  
+  .book-card button {
+    margin-top: 0.8rem;
+    font-weight:600;
+    /* font-size: 10rem; */
+    padding: 0.6rem 1.2rem;
+    background: #7F00FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .book-card button:hover {
+    background: #a100ff;
+  }
+  .reader h2{
+    color:black;
+    margin-bottom: 1rem;
+  }
+  .reader {
+    max-width: 800px;
+    margin: 50px auto;
+    font-family: 'Georgia', serif;
+  }
+  
+  .book-content {
+    white-space: pre-wrap;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-y: auto;
+  }
+
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #7F00FF;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto;
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+  }
+  
+  .search-container input {
+    padding: 0.75rem 1rem;
+    height: 3rem;
+    width: 40vw;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  }
+  
+  .search-container input:focus {
+    border-color: #7F00FF;
+    background-color: rgba(127, 0, 255, 0.1);
+    box-shadow: 0 0 8px rgba(127, 0, 255, 0.4);
+  }
+  
+  .search-container ::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .search-container button {
+    padding: 0.75rem 1.25rem;
+    height: 3rem;
+    background:  #7F00FF;
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(127, 0, 255, 0.3);
+  }
+  
+  .search-container button:hover {
+    transform: scale(1.05);
+  }
+  
+  .search-container button:active {
+    transform: scale(0.97);
+  }
+  
+  
+
+
+
+
+
+/* chatBot */
+.chat-container h2 {
+  color: white;
+  margin: 50px 0 40px 0;
+}
+
+.chat-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.chat-box {
+  background: #f0f0f0;
+  padding: 1rem;
+  height: 400px;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-msg,
+.user-msg {
+  margin: 1rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  max-width: 75%;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.bot-msg {
+  background: #e0e0ff;
+  align-self: flex-start;
+}
+
+.user-msg {
+  background: #d1ffd6;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.chat-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+}
+
+.chat-input input {
+  padding: 0.75rem 1rem;
+  height: 3rem;
+  width: 40vw;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+.chat-input input:focus {
+  border-color: #7f00ff;
+  background-color: rgba(127, 0, 255, 0.1);
+  box-shadow: 0 0 8px rgba(127, 0, 255, 0.4);
+}
+
+.chat-input ::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.chat-input button {
+  padding: 0.75rem 1.25rem;
+  height: 3rem;
+  background: #7f00ff;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(127, 0, 255, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.chat-input button:hover {
+  transform: scale(1.05);
+}
+
+.chat-input button:active {
+  transform: scale(0.97);
+}
+
+
+
+
+
+
+
+
+  .content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: #f7f7f7;
+    bottom: 0;
+    width: 100%;
+
+    /* margin-top: 3rem; */
+  }
+  
+  .footer .social-icons a {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    color: #7F00FF;
+  }
+  
+
+  
+  @media (max-width: 1000px){
+    .navbar{
+      margin-top: 0px;
+      width: 100%;
+      background-color: none;
+    }
+    
+    .nav-links{
+        gap: 0rem;
+    }
+    .nav-links li a{
+      font-size: 1.1rem;
+      margin-right: 3.5rem;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+  }
+
+
+  @media (max-width: 992px) {
+    .book-card {
+      flex: 1 1 calc(50% - 2rem);
+      max-width: calc(50% - 2rem);
+    }
+    .book-grid{
+      padding: 0;
+    }
+    .chat-input input {
+      width: 80vw;
+    }
+  }
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+      font-size: 1.5rem;
+    }
+    
+    .navbar .logo{
+      margin-left: 0.2rem;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: row;
+      background: linear-gradient(to right, #7F00FF, #E100FF);;
+      position: absolute;
+      top: 80px; 
+      border-radius: 8px;
+      border: 0.2px solid white;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links li{
+      padding: 0.8rem;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .nav-links li a {
+      color: white;
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      text-align: left;
+    }
+    .nav-links li a.active,
+    .nav-links li a:hover {
+    border-bottom: 0.2px solid white;
+  }
+  .book-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  .book-grid{
+    padding: 0; 
+  }
+  .chat-input input {
+    width: 70vw;
+  }
+
+  }
+  
+
+
+
+  
